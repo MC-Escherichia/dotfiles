@@ -1,0 +1,6 @@
+[submodule ".live-packs/yasnippets-orgmode"]
+	path = .live-packs/yasnippets-orgmode
+	url = git@github.com:yyr/yasnippets-orgmode
+[submodule ".live-packs/matlab-pack"]
+	path = .live-packs/matlab-pack
+	url = git@github.com:MC-Escherichia/matlab-pack

@@ -174,5 +174,16 @@
 ;; gnuplot mode
   (global-set-key [(f9)] 'gnuplot-make-buffer)
 
+
+
+(defun justwrite ()
+  (interactive)
+  (writeroom-mode 1)
+  (company-mode 0)
+  (auto-complete-mode 0)
+  (visual-line-mode 1)
+  (org-timer-start 45))
+
+
 ;; end of line for gnuplot-mode
 ;;--------------------------------------------------------------------
