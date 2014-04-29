@@ -4,3 +4,6 @@
 [submodule ".live-packs/matlab-pack"]
 	path = .live-packs/matlab-pack
 	url = git@github.com:MC-Escherichia/matlab-pack
+[submodule ".live-packs/zenburn-pack"]
+	path = .live-packs/zenburn-pack
+	url = git@github.com:siancu/zenburn-pack
