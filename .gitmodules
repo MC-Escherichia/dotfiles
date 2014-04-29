@@ -7,3 +7,6 @@
 [submodule ".live-packs/zenburn-pack"]
 	path = .live-packs/zenburn-pack
 	url = git@github.com:siancu/zenburn-pack
+[submodule ".live-packs/eclim-pack/lib/emacs-eclim"]
+	path = .live-packs/eclim-pack/lib/emacs-eclim
+	url = git@github.com:senny/emacs-eclim
