@@ -185,5 +185,9 @@
   (org-timer-start 45))
 
 
+(live-add-pack-lib "emacs-noflet")
+(live-add-pack-lib "iedit")
+(live-add-pack-lib "lispy")
+(require 'lispy)
 ;; end of line for gnuplot-mode
 ;;--------------------------------------------------------------------
