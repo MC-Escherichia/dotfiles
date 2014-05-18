@@ -143,7 +143,10 @@
       '(("t" "Todo" entry (file+headline "~/Dropbox/org/gtd.org" "Tasks")
              "* TODO %?\n  %i\n  %a")
         ("j" "Journal" entry (file+datetree "~/Dropbox/journal.org")
-             "* %?\nEntered on %U\n  %i\n  %a")))
+         "* %?\nEntered on %U\n  %i\n  %a")
+        ("q" "Quotes" entry (file "~/Dropbox/org/quotes.org"
+                                  "*  "))))
+
 ;;; themes
 (add-to-list 'default-frame-alist '( font . "inconsolata"))
 (set-face-attribute 'default nil :height 120)
@@ -184,10 +187,31 @@
   (visual-line-mode 1)
   (org-timer-start 45))
 
+(setq org-latex-pdf-process (quote ("texi2dvi --pdf --clean --verbose
+--batch %f" "bibtex %b" "texi2dvi --pdf --clean --verbose --batch %f"
+"texi2dvi --pdf --clean --verbose --batch %f")))
+
+
+
 
 (live-add-pack-lib "emacs-noflet")
 (live-add-pack-lib "iedit")
 (live-add-pack-lib "lispy")
+
 (require 'lispy)
+
+(add-to-list 'load-path "/usr/lib/picolisp/lib/el")
+(require 'picolisp)
+
+(add-to-list 'auto-mode-alist '("\\.l$" . picolisp-mode))
+
+  (add-hook 'picolisp-mode-hook
+       (lambda ()
+          (lispy-mode +1) ;; Loads paredit mode automatically
+          (tsm-mode) ;; Enables TSM
+          (define-key picolisp-mode-map (kbd "RET") 'newline-and-indent)
+          (define-key picolisp-mode-map (kbd "C-h") 'paredit-backward-delete)))
+
+
 ;; end of line for gnuplot-mode
 ;;--------------------------------------------------------------------

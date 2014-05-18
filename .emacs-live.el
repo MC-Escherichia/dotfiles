@@ -65,4 +65,14 @@
 
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq backup-by-copying t)
+
+
+(defun org-mode-article-modes ()
+  (reftex-mode t)
+;  (bib-cite-minor-mode t)
+  (and (buffer-file-name)
+       (file-exists-p (buffer-file-name))
+       (reftex-parse-all)))
+(add-hook 'org-mode-hook
+           'org-mode-article-modes)
 ;;; emacs-live-packs.el ends here
