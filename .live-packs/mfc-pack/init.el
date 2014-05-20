@@ -35,7 +35,7 @@
 
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
-    (setq auto-save-file-name-transforms
+(setq auto-save-file-name-transforms
           `((".*" ,temporary-file-directory t)))
 ;
 
@@ -64,6 +64,12 @@
 (setq org-plantuml-jar-path "/opt/plantuml/plantuml.jar")
 
 
+(live-add-pack-lib "emacs-noflet")
+(live-add-pack-lib "iedit")
+(live-add-pack-lib "lispy")
+
+(require 'le-clojure)
+(require 'lispy)
 (require 'clj-refactor)
 
 
@@ -72,8 +78,9 @@
                                ;; inset keybidning set up here
 
                                (cljr-add-keybindings-with-prefix "C-c C-b")
-                               ))
-;
+                               (paredit-mode 0)
+                               (lispy-mode)))
+
 
 (setq org-latex-create-formula-image-program 'imagemagick)
 (define-skeleton org-skeleton
@@ -199,27 +206,19 @@
 
 
 
-
-;(live-add-pack-lib "emacs-noflet")
-;(live-add-pack-lib "iedit")
-;(live-add-pack-lib "lispy")
-
-;(require 'lispy)
-
-
-(add-to-list 'load-path "/usr/lib/picolisp/lib/el")
-(require 'picolisp)
-
-(add-to-list 'auto-mode-alist '("\\.l$" . picolisp-mode))
-
-
-
-(add-hook 'picolisp-mode-hook
-           (lambda ()
-             (lispy-mode +1) ;; Loads paredit mode automatically
-             (tsm-mode)      ;; Enables TSM
-(define-key picolisp-mode-map (kbd "RET") 'newline-and-indent)
-             (define-key picolisp-mode-map (kbd "C-h") 'paredit-backward-delete)))
+;;(add-to-list 'load-path "/usr/lib/picolisp/lib/el")
+;;(require 'picolisp)
+;;
+;;(add-to-list 'auto-mode-alist '("\\.l$" . picolisp-mode))
+;;
+;;
+;;
+;;(add-hook 'picolisp-mode-hook
+;;           (lambda ()
+;;             (lispy-mode +1) ;; Loads paredit mode automatically
+;;             (tsm-mode)      ;; Enables TSM
+;;(define-key picolisp-mode-map (kbd "RET") 'newline-and-indent)
+;;             (define-key picolisp-mode-map (kbd "C-h") 'paredit-backward-delete)))
 
 
 ;; end of line for gnuplot-mode

@@ -60,7 +60,7 @@
                   /home/matt/.live-packs/yasnippets-orgmode
                  /home/matt/.live-packs/eclim-pack
                    ;; mfc-pack needs to load last
-;                   /home/matt/.live-packs/mfc-pack
+                   /home/matt/.live-packs/mfc-pack
                    ))
 
 (setq backup-directory-alist `(("." . "~/.saves")))
