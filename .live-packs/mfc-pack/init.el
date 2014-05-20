@@ -33,10 +33,10 @@
 
 ;; move backup files into temp directory
 
-;(setq backup-directory-alist
-;      `((".*" . ,temporary-file-directory)))
-;    (setq auto-save-file-name-transforms
-;          `((".*" ,temporary-file-directory t)))
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+    (setq auto-save-file-name-transforms
+          `((".*" ,temporary-file-directory t)))
 ;
 
 ;; HADOOP stuff
@@ -64,15 +64,15 @@
 (setq org-plantuml-jar-path "/opt/plantuml/plantuml.jar")
 
 
-;(require 'clj-refactor)
+(require 'clj-refactor)
 
 
-;(add-hook 'clojure-mode-hook (lambda ()
-;                               (clj-refactor-mode 1)
-;                               ;; inset keybidning set up here
-;
-;                               (cljr-add-keybindings-with-prefix "C-c C-b")
-;                               ))
+(add-hook 'clojure-mode-hook (lambda ()
+                               (clj-refactor-mode 1)
+                               ;; inset keybidning set up here
+
+                               (cljr-add-keybindings-with-prefix "C-c C-b")
+                               ))
 ;
 
 (setq org-latex-create-formula-image-program 'imagemagick)
@@ -157,7 +157,7 @@
 
 ;;; themes
 (add-to-list 'default-frame-alist '( font . "inconsolata"))
-;(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 120)
 (load-theme 'zenburn t )
 
 ;;; commonn lisp setup
@@ -195,7 +195,7 @@
   (visual-line-mode 1)
   (org-timer-start 45))
 
-;(setq org-latex-pdf-process (quote ("texi2dvi --pdf --clean --verbose --batch %f" "bibtex %b" "texi2dvi --pdf --clean --verbose --batch %f" "texi2dvi --pdf --clean --verbose --batch %f")))
+(setq org-latex-pdf-process (quote ("texi2dvi --pdf --clean --verbose --batch %f" "bibtex %b" "texi2dvi --pdf --clean --verbose --batch %f" "texi2dvi --pdf --clean --verbose --batch %f")))
 
 
 
@@ -207,19 +207,19 @@
 ;(require 'lispy)
 
 
-;(add-to-list 'load-path "/usr/lib/picolisp/lib/el")
-;(require 'picolisp)
+(add-to-list 'load-path "/usr/lib/picolisp/lib/el")
+(require 'picolisp)
 
-;(add-to-list 'auto-mode-alist '("\\.l$" . picolisp-mode))
+(add-to-list 'auto-mode-alist '("\\.l$" . picolisp-mode))
 
 
 
-;(add-hook 'picolisp-mode-hook
-;           (lambda ()
-;             (lispy-mode +1) ;; Loads paredit mode automatically
-;             (tsm-mode)      ;; Enables TSM
-;             (define-key picolisp-mode-map (kbd "RET") 'newline-and-indent)
-;             (define-key picolisp-mode-map (kbd "C-h") 'paredit-backward-delete)))
+(add-hook 'picolisp-mode-hook
+           (lambda ()
+             (lispy-mode +1) ;; Loads paredit mode automatically
+             (tsm-mode)      ;; Enables TSM
+(define-key picolisp-mode-map (kbd "RET") 'newline-and-indent)
+             (define-key picolisp-mode-map (kbd "C-h") 'paredit-backward-delete)))
 
 
 ;; end of line for gnuplot-mode
