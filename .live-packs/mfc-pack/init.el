@@ -4,49 +4,53 @@
 ;; See README for more information.
 
 ;; Load bindings config
-(live-load-config-file "bindings.el")
+;(live-load-config-file "bindings.el")
 
 
 ;;; package install
-(require 'package)
+;(require 'package)
 
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
-(package-initialize)
+
+;(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+;                         ("marmalade" . "http://marmalade-repo.org/packages/")
+;                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
+;(package-initialize)
+
 
 
 ;;; tramp
-(require 'tramp)
-(setq tramp-default-method "ssh")
-(setq tramp-default-host "cris2.cheme.columbia.edu")
-(setq tramp-default-user "Idea")
+;(require 'tramp)
+;(setq tramp-default-method "ssh")
+;(setq tramp-default-host "cris2.cheme.columbia.edu")
+;(setq tramp-default-user "matt")
 
 ; automatically get the correct mode
 
 ;; use emacs as an editor
-(setenv "EDITOR" "/bin/edit-emacs")
+(setenv "EDITOR" "/bin/emedit")
 
 ;; move backup files into temp directory
- (setq backup-directory-alist
-          `((".*" . ,temporary-file-directory)))
-    (setq auto-save-file-name-transforms
-          `((".*" ,temporary-file-directory t)))
 
+;(setq backup-directory-alist
+;      `((".*" . ,temporary-file-directory)))
+;    (setq auto-save-file-name-transforms
+;          `((".*" ,temporary-file-directory t)))
+;
 
 ;; HADOOP stuff
 
-(setenv "HADOOP_INSTALL" "/home/matt/code/hadoop/")
-(setenv "HADOOP_HOME" "/home/matt/code/hadoop/hadoop/bin")
-(setenv "JAVA_HOME" "/usr/lib/jvm/java-7-oracle")
-(setenv "R_HOME" "/usr/lib/R")
+;(setenv "HADOOP_INSTALL" "/home/matt/code/hadoop/")
+;(setenv "HADOOP_HOME" "/home/matt/code/hadoop/hadoop/bin")
+;(setenv "JAVA_HOME" "/usr/lib/jvm/java-7-oracle")
+;(setenv "R_HOME" "/usr/lib/R")
 
 ;; AUCtex
 
 
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
+;(setq TeX-auto-save t)
+;(setq TeX-parse-self t)
 
 
 
@@ -60,14 +64,16 @@
 (setq org-plantuml-jar-path "/opt/plantuml/plantuml.jar")
 
 
-(require 'clj-refactor)
+;(require 'clj-refactor)
 
-(add-hook 'clojure-mode-hook (lambda ()
-                               (clj-refactor-mode 1)
-                               ;; inset keybidning set up here
 
-                               (cljr-add-keybindings-with-prefix "C-c C-b")
-                               ))
+;(add-hook 'clojure-mode-hook (lambda ()
+;                               (clj-refactor-mode 1)
+;                               ;; inset keybidning set up here
+;
+;                               (cljr-add-keybindings-with-prefix "C-c C-b")
+;                               ))
+;
 
 (setq org-latex-create-formula-image-program 'imagemagick)
 (define-skeleton org-skeleton
@@ -99,7 +105,7 @@
 ;(add-to-list 'term-bind-key-alist '("C-c C-k" . term-line-mode))
 
 
-(require 'ess-site)
+;(require 'ess-site)
 
 (defun org-babel-evaluate-fun (lang body)
   (not (string= lang "R")))
@@ -135,7 +141,7 @@
 
 (add-hook 'org-mode-hook 'org-mode-reftex-setup)
 (setq org-default-notes-file "~/Dropbox/notes.org")
-     (define-key global-map "\C-cc" 'org-capture)
+(define-key global-map "\C-cc" 'org-capture)
 
 (setq org-link-abbrev-alist
       '(("papers" . "~/Dropbox/papers/%s.pdf")))
@@ -144,20 +150,22 @@
              "* TODO %?\n  %i\n  %a")
         ("j" "Journal" entry (file+datetree "~/Dropbox/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")
-        ("q" "Quotes" entry (file "~/Dropbox/org/quotes.org"
-                                  "*  "))))
+        ("q" "Quotes" entry (file "~/Dropbox/org/quotes.org")
+          "*  ")
+        ("r" "Readling List" entry (file "~/Dropbox/org/quotes.org")
+         "* %?\n Entered on %U \n %i\n %a")))
 
 ;;; themes
 (add-to-list 'default-frame-alist '( font . "inconsolata"))
-(set-face-attribute 'default nil :height 120)
+;(set-face-attribute 'default nil :height 120)
 (load-theme 'zenburn t )
 
 ;;; commonn lisp setup
 
-(add-to-list 'load-path "~/github/slime")
-(require 'slime-autoloads)
-(setq inferior-lisp-program "/usr/bin/ccl64")
-(slime-setup)
+;(add-to-list 'load-path "~/github/slime")
+;(require 'slime-autoloads)
+;(setq inferior-lisp-program "/usr/bin/ccl64")
+';(slime-setup)
 ;;--------------------------------------------------------------------
 ;; Lines enabling gnuplot-mode
 
@@ -166,16 +174,16 @@
 ;;  (setq load-path (append (list "/usr/share/gnuplot") load-path))
 
 ;; these lines enable the use of gnuplot mode
-  (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
-  (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
+ ; (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
+ ; (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
 
 ;; this line automatically causes all files with the .gp extension to
 ;; be loaded into gnuplot mode
-  (setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
+  ;(setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
 
 ;; This line binds the function-9 key so that it opens a buffer into
 ;; gnuplot mode
-  (global-set-key [(f9)] 'gnuplot-make-buffer)
+;  (global-set-key [(f9)] 'gnuplot-make-buffer)
 
 
 
@@ -187,30 +195,31 @@
   (visual-line-mode 1)
   (org-timer-start 45))
 
-(setq org-latex-pdf-process (quote ("texi2dvi --pdf --clean --verbose
---batch %f" "bibtex %b" "texi2dvi --pdf --clean --verbose --batch %f"
-"texi2dvi --pdf --clean --verbose --batch %f")))
+;(setq org-latex-pdf-process (quote ("texi2dvi --pdf --clean --verbose --batch %f" "bibtex %b" "texi2dvi --pdf --clean --verbose --batch %f" "texi2dvi --pdf --clean --verbose --batch %f")))
 
 
 
 
-(live-add-pack-lib "emacs-noflet")
-(live-add-pack-lib "iedit")
-(live-add-pack-lib "lispy")
+;(live-add-pack-lib "emacs-noflet")
+;(live-add-pack-lib "iedit")
+;(live-add-pack-lib "lispy")
 
-(require 'lispy)
+;(require 'lispy)
 
-(add-to-list 'load-path "/usr/lib/picolisp/lib/el")
-(require 'picolisp)
 
-(add-to-list 'auto-mode-alist '("\\.l$" . picolisp-mode))
+;(add-to-list 'load-path "/usr/lib/picolisp/lib/el")
+;(require 'picolisp)
 
-  (add-hook 'picolisp-mode-hook
-       (lambda ()
-          (lispy-mode +1) ;; Loads paredit mode automatically
-          (tsm-mode) ;; Enables TSM
-          (define-key picolisp-mode-map (kbd "RET") 'newline-and-indent)
-          (define-key picolisp-mode-map (kbd "C-h") 'paredit-backward-delete)))
+;(add-to-list 'auto-mode-alist '("\\.l$" . picolisp-mode))
+
+
+
+;(add-hook 'picolisp-mode-hook
+;           (lambda ()
+;             (lispy-mode +1) ;; Loads paredit mode automatically
+;             (tsm-mode)      ;; Enables TSM
+;             (define-key picolisp-mode-map (kbd "RET") 'newline-and-indent)
+;             (define-key picolisp-mode-map (kbd "C-h") 'paredit-backward-delete)))
 
 
 ;; end of line for gnuplot-mode

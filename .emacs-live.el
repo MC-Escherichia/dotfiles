@@ -56,23 +56,18 @@
 (live-add-packs '(stable/bindings-pack))
 (live-add-packs '(
                   /home/matt/.live-packs/zenburn-pack
-                  /home/matt/.live-packs/matlab-pack
+                 /home/matt/.live-packs/matlab-pack
                   /home/matt/.live-packs/yasnippets-orgmode
-                   /home/matt/.live-packs/eclim-pack
+                 /home/matt/.live-packs/eclim-pack
                    ;; mfc-pack needs to load last
-                   /home/matt/.live-packs/mfc-pack
+;                   /home/matt/.live-packs/mfc-pack
                    ))
 
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq backup-by-copying t)
 
 
-(defun org-mode-article-modes ()
-  (reftex-mode t)
-;  (bib-cite-minor-mode t)
-  (and (buffer-file-name)
-       (file-exists-p (buffer-file-name))
-       (reftex-parse-all)))
-(add-hook 'org-mode-hook
-           'org-mode-article-modes)
+
+
+
 ;;; emacs-live-packs.el ends here
