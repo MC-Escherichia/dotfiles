@@ -48,17 +48,16 @@
 ;;                                   "ctags-pack"
                                    "prelude-live-pack"
 ;;                                   "stumpwm-pack"
-                                  "pres-pack"
-                                   ))
+                                  "pres-pack"))
 
 
 
 (live-add-packs '(stable/bindings-pack))
 (live-add-packs '(
                   /home/matt/.live-packs/zenburn-pack
-                 /home/matt/.live-packs/matlab-pack
-                  /home/matt/.live-packs/yasnippets-orgmode
-                 /home/matt/.live-packs/eclim-pack
+                ; /home/matt/.live-packs/matlab-pack
+;;                  /home/matt/.live-packs/yasnippets-orgmode
+                 ;/home/matt/.live-packs/eclim-pack
                    ;; mfc-pack needs to load last
                    /home/matt/.live-packs/mfc-pack
                    ))
@@ -68,6 +67,13 @@
 
 
 
-
+(defun justwrite ()
+  (interactive)
+  (writeroom-mode 1)
+  (company-mode 0)
+  (auto-complete-mode 0)
+  (visual-line-mode 1)
+  (org-timer-start 45)
+  (git-gutter-mode 0))
 
 ;;; emacs-live-packs.el ends here

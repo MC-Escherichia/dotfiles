@@ -4,7 +4,7 @@
 ;; See README for more information.
 
 ;; Load bindings config
-;(live-load-config-file "bindings.el")
+(live-load-config-file "bindings.el")
 
 
 ;;; package install
@@ -194,13 +194,10 @@
 
 
 
-(defun justwrite ()
-  (interactive)
-  (writeroom-mode 1)
-  (company-mode 0)
-  (auto-complete-mode 0)
-  (visual-line-mode 1)
-  (org-timer-start 45))
+
+
+
+
 
 (setq org-latex-pdf-process (quote ("texi2dvi --pdf --clean --verbose --batch %f" "bibtex %b" "texi2dvi --pdf --clean --verbose --batch %f" "texi2dvi --pdf --clean --verbose --batch %f")))
 

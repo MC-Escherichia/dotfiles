@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/.cabal/bin:$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.1.0/bin:$HOME/.cabal/bin:$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
