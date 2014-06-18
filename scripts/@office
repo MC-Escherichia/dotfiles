@@ -1,0 +1,9 @@
+#!/bin/sh
+
+ip link set wlp2s0 down
+
+ip link set enp3s0 up &
+
+/home/matt/.screenlayout/office.sh &
+
+dhcpcd &

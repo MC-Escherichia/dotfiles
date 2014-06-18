@@ -1,0 +1,7 @@
+#!/bin/sh
+rfkill unblock all &
+ip link set enp3s0 down &
+ip link set wlp2s0 down &
+dhcpcd -x &
+/home/matt/.screenlayout/lappy.sh
+wifi-menu

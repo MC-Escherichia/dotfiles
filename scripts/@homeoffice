@@ -1,0 +1,4 @@
+#!/bin/sh
+/home/matt/.screenlayout/homeoffice.sh &
+sudo netctl stop-all &&
+sudo netctl start apt_tplink_24
