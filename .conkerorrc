@@ -1,0 +1,31 @@
+webjumps.g = webjumps.google
+
+
+//gmail acounts
+define_webjump("1gmail", "https://mail.google.com/mail/u/0/"); //primary account
+define_webjump("2gmail", "https://mail.google.com/mail/u/1/"); //secondary account
+define_webjump("3gmail", "https://mail.google.com/mail/u/2/"); //tertiary account
+
+// site -search
+define_webjump("site-search", "javascript:window.location.href='http://google.com/search?q=%s+site:'+window.location.host");
+
+define_webjump("so","http://stackoverflow.com/search?q=%s", $alternative="http://stackoverflow.com");
+
+
+define_webjump("hoogle", "http://haskell.org/hoogle/?hoogle=%s",
+               $alternative = "http://haskell.org/hoogle/");
+
+webjumps.h = webjumps.hoogle
+
+define_webjump("github", "http://github.com/search?q=%s&type=Everything");
+
+define_webjump("wok", "http://apps.webofknowledge.com/UA_ClearGeneralSearch.do?action=clear&product=UA&search_mode=GeneralSearch&SID=4FBiQjrNmEXicWSOYoz");
+
+require("duckduckgo");
+
+webjumps.s = webjumps.duckduckgo;
+
+
+define_webjump("clj","http://clojure.org/search/view?wikispacesFormToken=0f2f71f1bd766ef96c9c85f0ca0f6d01b8568324&q=%s");
+
+define_webjump("voice","http://www.google.com/voice/b/1#inbox/")
