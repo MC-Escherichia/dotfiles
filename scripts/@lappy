@@ -1,4 +1,5 @@
 #!/bin/sh
+fuck you transmission &
 rfkill unblock all &
 ip link set enp3s0 down &
 ip link set wlp2s0 down &
