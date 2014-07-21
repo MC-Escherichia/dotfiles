@@ -16,6 +16,8 @@ fi
 # exec startxfce4
 # ...or the Window Manager of your choice
 export PATH=~/.cabal/bin:~/.xmonad/bin:$PATH
+export EDITOR=emedit
+export VISUAL=emedit
 emacs --daemon &
 syndaemon -t -k -i 2 &
 xsetroot -cursor_name left_ptr

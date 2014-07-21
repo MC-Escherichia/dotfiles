@@ -55,7 +55,7 @@
 (live-add-packs '(stable/bindings-pack))
 (live-add-packs '(
                   /home/matt/.live-packs/zenburn-pack
-                ; /home/matt/.live-packs/matlab-pack
+                 /home/matt/.live-packs/matlab-pack
 ;;                  /home/matt/.live-packs/yasnippets-orgmode
                  ;/home/matt/.live-packs/eclim-pack
                    ;; mfc-pack needs to load last

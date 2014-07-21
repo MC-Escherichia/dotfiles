@@ -95,6 +95,7 @@
  )
 (global-set-key [C-S-f4] 'org-skeleton)
 
+
 ;(require 'multi-term)
 
 ;(setq multi-term-program "/usr/bin/zsh"
@@ -220,3 +221,8 @@
 
 ;; end of line for gnuplot-mode
 ;;--------------------------------------------------------------------
+;; for GDB/debugging in general
+(global-set-key (kbd "<f10>") 'gud-cont)
+(global-set-key (kbd "<f9>") 'gud-step);; equiv matlab step in
+(global-set-key (kbd "<f8>") 'gud-next) ;; equiv matlab step 1
+(global-set-key (kbd "<f7>") 'gud-finish) ;; equiv matlab step out
