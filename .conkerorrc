@@ -29,6 +29,7 @@ webjumps.s = webjumps.duckduckgo;
 define_webjump("clj","http://clojure.org/search/view?wikispacesFormToken=0f2f71f1bd766ef96c9c85f0ca0f6d01b8568324&q=%s");
 
 define_webjump("voice","http://www.google.com/voice/b/1#inbox/")
+<<<<<<< HEAD
 
 // hints mini-buffer
 hints_minibuffer_annotation_mode(true);
@@ -59,3 +60,5 @@ function focusblock (buffer) {
 add_hook('content_buffer_progress_change_hook', focusblock);
 
 session_pref("general.useragent.compatMode.firefox", true);
+=======
+>>>>>>> 16d8ce183ac432c8cf243c77a4f3f806fadaae21
