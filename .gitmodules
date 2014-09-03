@@ -1,14 +1,14 @@
 [submodule ".live-packs/yasnippets-orgmode"]
-	path = .live-packs/yasnippets-orgmode
+	path = .emacs-live-packs/yasnippets-orgmode
 	url = git@github.com:yyr/yasnippets-orgmode
 [submodule ".live-packs/matlab-pack"]
-	path = .live-packs/matlab-pack
+	path = .emacs-live-packs/matlab-pack
 	url = git@github.com:MC-Escherichia/matlab-pack
 [submodule ".live-packs/eclim-pack/lib/emacs-eclim"]
 	path = .live-packs/eclim-pack/lib/emacs-eclim
 	url = git@github.com:senny/emacs-eclim
 [submodule ".live-packs/zenburn-pack"]
-	path = .live-packs/zenburn-pack
+	path = .emacs-live-packs/zenburn-pack
 	url = git@github.com:siancu/zenburn-pack
 [submodule ".live-packs/mfc-pack/lib/lispy"]
 	path = .live-packs/mfc-pack/lib/lispy

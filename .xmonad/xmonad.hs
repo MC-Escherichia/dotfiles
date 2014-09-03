@@ -13,6 +13,7 @@ import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
+
 import XMonad.Layout.ThreeColumns()
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
@@ -34,7 +35,7 @@ myTerminal = "lilyterm"
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 myWorkspaces::[[Char]]
-myWorkspaces = ["1:term","2:web","3:code","4:write","5:media"] ++ map show [6..9]
+myWorkspaces =  map show [1..9]
 
 
 ------------------------------------------------------------------------
@@ -127,8 +128,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   --
 
   -- Start a terminal.  Terminal to start is specified by myTerminal variable.
-  [ ((modMask .|. shiftMask, xK_Return),
+  [ ((modMask .|. shiftMask, xK_backslash),
      spawn $ XMonad.terminal conf)
+
+  ,  ((modMask .|. shiftMask, xK_Return),
+      spawn $ "emacsclient -cne '(get-term)'")
 
   -- Lock the screen using xscreensaver.
   , ((modMask .|. controlMask, xK_l),
@@ -284,7 +288,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
   -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
   [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-      | (key, sc) <- zip [xK_e, xK_w,  xK_r] [0..]
+      | (key, sc) <- zip [xK_e, xK_w] [0..]
       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 

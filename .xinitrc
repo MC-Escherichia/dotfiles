@@ -22,6 +22,6 @@ emacs --daemon &
 syndaemon -t -k -i 2 &
 xsetroot -cursor_name left_ptr
 xrdb -load ~/.Xresources
-
+xbindkeys
 
 exec xmonad
