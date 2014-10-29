@@ -16,8 +16,9 @@ fi
 # exec startxfce4
 # ...or the Window Manager of your choice
 export PATH=~/.cabal/bin:~/.xmonad/bin:$PATH
-export EDITOR=emedit
-export VISUAL=emedit
+export EDITOR='emacsclient'
+export ALTERNATE_EDITOR=''
+export BROWSER='conkeror'
 emacs --daemon &
 syndaemon -t -k -i 2 &
 xsetroot -cursor_name left_ptr

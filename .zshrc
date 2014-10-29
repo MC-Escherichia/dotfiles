@@ -56,7 +56,9 @@ export PATH=$HOME/scripts:$HOME/.gem/ruby/2.1.0/bin:$HOME/.cabal/bin:$HOME/bin:/
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='emedit'
+export EDITOR='emacsclient'
+export ALTERNATE_EDIOTR = ""
+export BROWSER='conkeror'
 # else
 #   export EDITOR='mvim'
 # fi
