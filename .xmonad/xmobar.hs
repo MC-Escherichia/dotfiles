@@ -18,9 +18,8 @@ Config {
         Run DynNetwork ["-L","0","-H","32","--normal","green","--high","red"] 100,
         Run Com "dropbox" ["status"] "dropbox" 15,
         Run Date "%a %b %_d %l:%M" "date" 10,
-        Run StdinReader
-    ],
+        Run StdinReader ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% }{ %multicpu% |  %memory%  | %swap% |  %dynnetwork%| %battery%| %dropbox%   <fc=#FFFFCC>%date%</fc>   %KNYC%"
+    template = "%StdinReader% }{ %multicpu% |  %memory%  | %swap% |  %dynnetwork%| %battery%| %dropbox% | %vol%  <fc=#FFFFCC>%date%</fc>   %KNYC%"
 }

@@ -45,29 +45,19 @@ ZSH_THEME="mikeh"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git archlinux colored-man  cp extract ssh-agent github git mvn lein battery emoji-clock catimg fasd)
+plugins=(git archlinux colored-man  cp extract ssh-agent github git mvn lein battery emoji-clock catimg fasd quote systemd)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+alias e='emacsclient -c'
 
-export PATH=$HOME/scripts:$HOME/.gem/ruby/2.1.0/bin:$HOME/.cabal/bin:$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
 
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='emacsclient'
-export ALTERNATE_EDIOTR = ""
-export BROWSER='conkeror'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
- export ARCHFLAGS="-arch x86_64"
-
-# ssh
- export SSH_KEY_PATH="~/.ssh/rsa_id:~/.ssh/frege2"
-
-export XDG_CONFIG_HOME=/etc/xdg/
-export XDG_CACHE_HOME=/etc/xdg_cache/
+if [[ "$TERM" == "dumb" ]]
+then
+  unsetopt zle
+  unsetopt prompt_cr
+  unsetopt prompt_subst
+  unfunction precmd
+  unfunction preexec
+  PS1='$ '
+fi

@@ -25,7 +25,6 @@ require("duckduckgo");
 
 webjumps.s = webjumps.duckduckgo;
 
-
 define_webjump("clj","http://clojure.org/search/view?wikispacesFormToken=0f2f71f1bd766ef96c9c85f0ca0f6d01b8568324&q=%s");
 
 define_webjump("voice","http://www.google.com/voice/b/1#inbox/")
@@ -35,28 +34,26 @@ hints_minibuffer_annotation_mode(true);
 
 view_source_use_external_editor = true;
 
-editor_shell_command = emedit;
+editor_shell_command = "emacsclient";
 
+cwd = make_file("/home/matt/Downloads/");
 
-external_content_handlers.set("application/pdf", "mupdf");
+xkcd_add_title = true;
+
+external_content_handlers =
+    {
+        "*": "emacsclient",
+        text: { "*": "emacsclient" },
+        image: { "*": "feh" },
+        application: {
+            pdf: "mupdf",
+            postscript: "gv",
+            "x-dvi": "xdvi"
+        }
+    };
+
 content_handlers.set("application/pdf", content_handler_open_default_viewer);
 
-function focusblock (buffer) {
-    var s = Components.utils.Sandbox(buffer.top_frame);
-    s.document = buffer.document.wrappedJSObject;
-    Components.utils.evalInSandbox(
-        "(function () {\
-            function nothing () {}\
-            if (! document.forms)\
-                return;\
-            for (var i = 0, nforms = document.forms.length; i < nforms; i++) {\
-              for (var j = 0, nels = document.forms[i].elements.length; j < nels; j++)\
-                document.forms[i].elements[j].focus = nothing;\
-            }\
-          })();",
-        s);
-}
-add_hook('content_buffer_progress_change_hook', focusblock);
 
 session_pref("general.useragent.compatMode.firefox", true);
 
@@ -76,3 +73,5 @@ add_hook("mode_line_hook", mode_line_adder(buffer_icon_widget), true);
 */
 /* ---------------- favicon in mini buffer */
 read_buffer_show_icons = true;
+
+remove_hook("download_added_hook", open_download_buffer_automatically);
