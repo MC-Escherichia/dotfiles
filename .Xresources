@@ -744,3 +744,5 @@ xterm*color15: #ffffff
 
 xterm*faceName: Inconsolata
 xterm*faceSize: 12
+
+Emacs.font: Inconsolata-12
