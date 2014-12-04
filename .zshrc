@@ -67,5 +67,5 @@ export PATH=$HOME/scripts:$HOME/.gem/ruby/2.1.0/bin:$HOME/.cabal/bin:$HOME/bin:/
 # ssh
  export SSH_KEY_PATH="~/.ssh/rsa_id:~/.ssh/frege2"
 
-export XDG_CONFIG_HOME=/etc/xdg/
-export XDG_CACHE_HOME=/etc/xdg_cache/
+export XDG_CONFIG_HOME=/etc/xdg
+export XDG_CACHE_HOME=/etc/xdg_cache
