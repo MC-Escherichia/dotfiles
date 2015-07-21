@@ -1,1 +1,1 @@
-/home/matt/code/emacs-live-packs/.emacs-live.el
+.emacs-live-packs/.emacs-live.el

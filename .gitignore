@@ -1,10 +1,1 @@
 *
-
-!.gitignore
-/.conkeror.mozdev.org/conkeror/hspo4uhh.default/cert8.db
-/.conkeror.mozdev.org/conkeror/hspo4uhh.default/cert_override.txt
-/.conkeror.mozdev.org/conkeror/hspo4uhh.default/downloads.json
-/.conkeror.mozdev.org/conkeror/hspo4uhh.default/localstore.rdf
-/.conkeror.mozdev.org/conkeror/hspo4uhh.default/lock
-/.conkeror.mozdev.org/conkeror/hspo4uhh.default/pluginreg.dat
-/.conkeror.mozdev.org/conkeror/hspo4uhh.default/prefs.js

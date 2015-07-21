@@ -1,77 +1,34 @@
-webjumps.g = webjumps.google
+// page modes
+require("page-modes/facebook.js");
+require("page-modes/github.js");
+require("page-modes/google-calendar.js");
+require("page-modes/google-maps.js");
+require("page-modes/google-search-results.js"); // google search results
+require("page-modes/google-voice.js");
+require("page-modes/reddit.js");
+require("page-modes/wikipedia.js");     // wikipedia mode
+require("page-modes/xkcd.js");
 
 
-//gmail acounts
+// webjumps
 define_webjump("1gmail", "https://mail.google.com/mail/u/0/"); //primary account
 define_webjump("2gmail", "https://mail.google.com/mail/u/1/"); //secondary account
 define_webjump("3gmail", "https://mail.google.com/mail/u/2/"); //tertiary account
-
-// site -search
-define_webjump("site-search", "javascript:window.location.href='http://google.com/search?q=%s+site:'+window.location.host");
-
-define_webjump("so","http://stackoverflow.com/search?q=%s", $alternative="http://stackoverflow.com");
-
-
-define_webjump("hoogle", "http://haskell.org/hoogle/?hoogle=%s",
-               $alternative = "http://haskell.org/hoogle/");
-
-webjumps.h = webjumps.hoogle
-
+define_webjump("archwiki", "https://wiki.archlinux.org/index.php?search=%s"); // arch wiki
+define_webjump("bashfaq","http://mywiki.wooledge.org/BashFAQ?action=fullsearch&context=180&value=%s&fullsearch=Text", $alternative = "http://mywiki.wooledge.org/BashFAQ");
+define_webjump("clio","http://clio.columbia.edu/quicksearch?q=%s&commit=Search");
+define_webjump("g","https://google.com/search?q=%s");
 define_webjump("github", "http://github.com/search?q=%s&type=Everything");
-
-define_webjump("wok","http://www.webofknowledge.com/?DestApp=UA");
-
-require("duckduckgo");
-
-webjumps.s = webjumps.duckduckgo;
-
-define_webjump("clj","http://clojure.org/search/view?wikispacesFormToken=0f2f71f1bd766ef96c9c85f0ca0f6d01b8568324&q=%s");
-
-define_webjump("voice","http://www.google.com/voice/b/1#inbox/")
-
-// hints mini-buffer
-hints_minibuffer_annotation_mode(true);
-
-view_source_use_external_editor = true;
-
-editor_shell_command = "emacsclient";
-
-cwd = make_file("/home/matt/Downloads/");
+define_webjump("jquery", "http://docs.jquery.com/Special:Search?ns0=1&search=%s"); // jquery
+define_webjump("scholar", "http://scholar.google.com/scholar?q=%s", $alternative = "http://scholar.google.com");
+define_webjump("site-search", "javascript:window.location.href='http://google.com/search?q=%s+site:'+window.location.host");
+define_webjump("stumpwmwiki", "http://github.com/sabetts/stumpwm/search?q=%s");
+define_webjump("trope", "http://www.google.com/cse?cx=partner-pub-6610802604051523%3A2szln92pqym&safe=off&q=%s", $alternative="http://www.tvtropes.org");
+define_webjump("twitter", "http://twitter.com/#!/search/%s", $alternative = "https://twitter.com/");  // twitter
+define_webjump("w3schools", "http://www.w3schools.com"); // w3schools site
+define_webjump("w3search", "http://www.google.com/search?sitesearch=www.w3schools.com&as_q=%s"); // w3schools search
+define_webjump("wunderground", "http://www.wunderground.com/cgi-bin/findweather/getForecast?query=%s");
+define_webjump("youtube", "http://www.youtube.com/results?search_query=%s&search=Search");
+define_webjump("youtube-user", "http://youtube.com/profile_videos?user=%s");
 
 xkcd_add_title = true;
-
-external_content_handlers =
-    {
-        "*": "emacsclient",
-        text: { "*": "emacsclient" },
-        image: { "*": "feh" },
-        application: {
-            pdf: "mupdf",
-            postscript: "gv",
-            "x-dvi": "xdvi"
-        }
-    };
-
-content_handlers.set("application/pdf", content_handler_open_default_viewer);
-
-
-session_pref("general.useragent.compatMode.firefox", true);
-
-url_completion_use_history = true;
-/* mode-line widget config ----------------------------------*/
-/* ------------------- buffer count indicator ----------------------------------*/
-add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
-/* ------------------- buffer loading indicator ----------------------------------*/
-add_hook("mode_line_hook", mode_line_adder(loading_count_widget), true);
-/* ------------------- remove useless clock ----------------------------------*/
-
-/* Displaying Favicons */
-require("favicon");
-/* ---------------- favicon in mode line */
-/* Doesn't seems to work
-add_hook("mode_line_hook", mode_line_adder(buffer_icon_widget), true);
-*/
-/* ---------------- favicon in mini buffer */
-read_buffer_show_icons = true;
-
-remove_hook("download_added_hook", open_download_buffer_automatically);
