@@ -1,6 +1,0 @@
-#!/bin/sh
-sudo ip link set wlp2s0 down
-/home/matt/.screenlayout/homeoffice.sh &
-sudo dhcpcd -x &&
-sudo netctl stop-all &&
-sudo netctl start wlp2s0-TP-LINK_2.4GHz_E63273
