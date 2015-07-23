@@ -1,0 +1,64 @@
+;; -*-lisp-*-
+(in-package :stumpwm)
+
+;;;; -*- Mode: Lisp -*-
+
+(defcommand swank () ()
+    "turn on swank server for the first time.
+     Loads a file that re-defines swank and then calls it"
+     (run-shell-command "stumpish 'eval (load \"~/.emacs-live-packs/stumpwm-pack/swank-hack.lisp\")'")
+     (echo-string
+      (current-screen)
+      "Starting swank inside stumpwm
+       M-x slime-connect RET 4004 RET, then (in-package stumpwm)"))
+
+(set-prefix-key (kbd "C-t"))
+
+(define-key *root-map* (kbd "C-s") "swank")
+;; start a swank server inside the process
+
+(define-key *root-map* (kbd "C-o") "fnext")
+                                        ; for fat fingering "o"
+
+ (defcommand console () ()
+   "runs a console other than xterm... urxvt doesn't seem to have a class,
+                                               and it only searcches for consoles in the current group"
+   (run-or-raise "urxvt" '(:class "URxvt")))
+
+
+(define-key *root-map* (kbd "c") "console")
+(define-key *root-map* (kbd "C-c") "console")
+(define-key *root-map* (kbd "M-c") "exec urxvt")
+
+(defcommand web () ()
+  "run or raise conkeror"
+  (run-or-raise "conkeror" '(:class "Conkeror")))
+(defcommand web2 () ()
+  "run or raise firefox"
+  (run-or-raise "firefox" '(:class "Firefox")))
+(defcommand spotify () ()
+  "run or raise spotify"
+  (run-or-raise "spotify" '(:class "Spotify")))
+
+
+
+(define-key *root-map* (kbd "w") "web")
+(define-key *root-map* (kbd "M-w") "web2")
+(define-key *root-map* (kbd "M-s") "spotify")
+
+(setf *mouse-focus-policy* :click)
+
+(run-commands "gnewbg musak")
+(clear-window-placement-rules)
+(define-frame-preference "musak"
+    (0 t t :title "Spotify Free - Linux Preview"))
+
+;; Volume control
+(define-key *top-map* (kbd "XF86AudioLowerVolume") "exec amixer set Master 5%-")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec amixer set Master 5%+")
+
+;; Mute
+(define-key *top-map* (kbd "XF86AudioMute") "exec amixer set Master toggle")
+
+(define-key *top-map* (kbd "XF86MonBrightnessDown") "exec xbacklight - 20")
+(define-key *top-map* (kbd "XF86MonBrightnessUp")   "exec xbacklight + 20")
