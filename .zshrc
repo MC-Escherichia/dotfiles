@@ -49,7 +49,7 @@ plugins=(git arch adb archlinux cp battery extract fasd git-extras gnu-utils gpg
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/npm/bin:$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
