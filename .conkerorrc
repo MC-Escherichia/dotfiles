@@ -18,6 +18,7 @@ define_webjump("archwiki", "https://wiki.archlinux.org/index.php?search=%s"); //
 define_webjump("bashfaq","http://mywiki.wooledge.org/BashFAQ?action=fullsearch&context=180&value=%s&fullsearch=Text", $alternative = "http://mywiki.wooledge.org/BashFAQ");
 define_webjump("clio","http://clio.columbia.edu/quicksearch?q=%s&commit=Search");
 define_webjump("g","https://google.com/search?q=%s");
+define_webjump("s","https://google.com/search?q=%s");
 define_webjump("github", "http://github.com/search?q=%s&type=Everything");
 define_webjump("jquery", "http://docs.jquery.com/Special:Search?ns0=1&search=%s"); // jquery
 define_webjump("scholar", "http://scholar.google.com/scholar?q=%s", $alternative = "http://scholar.google.com");
