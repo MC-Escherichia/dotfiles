@@ -38,6 +38,9 @@ ZSH_THEME="mikeh"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
+# Ignore duplicate lines in history
+setopt HIST_IGNORE_DUPS
+
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
@@ -82,3 +85,41 @@ export SSH_KEY_PATH="~/.ssh/rsa_id:~/.ssh/mike_rsa"
 
 # for android compilation
 export USE_CCACHE=1
+
+# syntax hilighting on command line
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# sometimes Matt needs a lot of help
+autoload -U run-help
+autoload run-help-git
+autoload run-help-svn
+autoload run-help-svk
+unalias run-help
+alias help=run-help
+
+# file manager keybinds
+cdUndoKey() {
+  popd      > /dev/null
+  zle       reset-prompt
+  echo
+  ls
+  echo
+}
+
+cdParentKey() {
+  pushd .. > /dev/null
+  zle      reset-prompt
+  echo
+  ls
+  echo
+}
+
+zle -N                 cdParentKey
+zle -N                 cdUndoKey
+bindkey '[A'      cdParentKey
+bindkey '[D'      cdUndoKey
+
+
+topShow() { top <$TTY; zle redisplay; }
+zle -N topShow
+bindkey '^[t' topShow
