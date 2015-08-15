@@ -40,6 +40,9 @@
   "run or raise spotify"
   (run-or-raise "spotify" '(:class "Spotify")))
 
+(defcommand emacs () ()
+  "overiding emacs behavior"
+  (run-or-raise "emacsclient -c" '(:class "Emacs")))
 
 
 (define-key *root-map* (kbd "w") "web")
