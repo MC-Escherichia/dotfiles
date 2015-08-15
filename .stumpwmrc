@@ -62,3 +62,11 @@
 
 (define-key *top-map* (kbd "XF86MonBrightnessDown") "exec xbacklight - 20")
 (define-key *top-map* (kbd "XF86MonBrightnessUp")   "exec xbacklight + 20")
+
+
+;; check battery
+(defcommand battery-level () ()
+  "Display the battery level"
+  (message "~a" (run-shell-command "acpi -b | grep 'Battery 0:' | sed 's/.*:\(.*\)/\1/'" t)))
+
+(define-key *root-map* (kbd "M-b") "battery-level")
