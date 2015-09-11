@@ -37,27 +37,52 @@ URxvt*loginShell:                     true
 ! URxvt*pointerBlank:                   boolean
 URxvt.scrollBar: false
 URxvt*xftAntialias: true
-URxvt*background: #3f3f3f
-URxvt*foreground: #dcdccc
-URxvt*cursorColor: #aaaaaa
-URxvt*colorUL: #366060
-URxvt*underlineColor: #dfaf8f
-URxvt*color0: #3f3f3f
-URxvt*color1: #cc9393
-URxvt*color2: #7f9f7f
-URxvt*color3: #d0bf8f
-URxvt*color4: #6ca0a3
-URxvt*color5: #dc8cc3
-URxvt*color6: #93e0e3
-URxvt*color7: #dcdccc
-URxvt*color8: #000000
-URxvt*color9: #dca3a3
-URxvt*color10: #bfebbf
-URxvt*color11: #f0dfaf
-URxvt*color12: #8cd0d3
-URxvt*color13: #dc8cc3
-URxvt*color14: #93e0e3
-URxvt*color15: #ffffff
+! Zenburn colors below
+! URxvt*background: #3f3f3f
+! URxvt*foreground: #dcdccc
+! URxvt*cursorColor: #aaaaaa
+! URxvt*colorUL: #366060
+! URxvt*underlineColor: #dfaf8f
+! URxvt*color0:  #3f3f3f
+! URxvt*color1:  #cc9393
+! URxvt*color2:  #7f9f7f
+! URxvt*color3:  #d0bf8f
+! URxvt*color4:  #6ca0a3
+! URxvt*color5:  #dc8cc3
+! URxvt*color6:  #93e0e3
+! URxvt*color7:  #dcdccc
+! URxvt*color8:  #000000
+! URxvt*color9:  #dca3a3
+! URxvt*color10: #bfebbf
+! URxvt*color11: #f0dfaf
+! URxvt*color12: #8cd0d3
+! URxvt*color13: #dc8cc3
+! URxvt*color14: #93e0e3
+! URxvt*color15: #ffffff
+
+!: ample-zen:
+*background:     #212121
+*foreground:     #bdbdb3
+*cursorColor:    #fb8512
+*colorUL:        #cc8512
+*underlineColor: #baba36
+*color0:         #0a0a0a
+*color1:         #CC5542
+*color2:         #6aa350
+*color3:         #bdbc61
+*color4:         #5180b3
+*color5:         #DC8CC3
+*color6:         #6a7550
+*color7:         #9b9b9b
+*color8:         #4c4c4c
+*color9:         #dd5542
+*color10:        #6abd50
+*color11:        #bdbc61
+*color12:        #528fd1
+*color13:        #5C888B
+*color14:        #6380b3
+*color15:        #c9c9c9
+
 ! URxvt*background:                     color
 ! URxvt*foreground:                     color
 ! URxvt*color0:                         color
