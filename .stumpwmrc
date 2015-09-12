@@ -3,6 +3,8 @@
 
 ;;;; -*- Mode: Lisp -*-
 
+;; (run-shell-command "feh --bg-scale /home/dave/Dropbox/Photos/cherry_blossoms.jpg")
+
 (defcommand swank () ()
     "turn on swank server for the first time.
      Loads a file that re-defines swank and then calls it"
@@ -36,6 +38,9 @@
 (defcommand web2 () ()
   "run or raise firefox"
   (run-or-raise "firefox" '(:class "Firefox")))
+(defcommand web3 () ()
+  "run or raise chrome"
+  (run-or-raise "google-chrome-stable" '(:class "Google-chrome")))
 (defcommand spotify () ()
   "run or raise spotify"
   (run-or-raise "spotify" '(:class "Spotify")))
@@ -47,6 +52,7 @@
 
 (define-key *root-map* (kbd "w") "web")
 (define-key *root-map* (kbd "M-w") "web2")
+(define-key *root-map* (kbd "M-q") "web3")
 (define-key *root-map* (kbd "M-s") "spotify")
 
 (setf *mouse-focus-policy* :click)
@@ -55,6 +61,13 @@
 (clear-window-placement-rules)
 (define-frame-preference "musak"
     (0 t t :title "Spotify Free - Linux Preview"))
+
+(defcommand reset-netctl () ()
+            "resets netctl-auto for those moments when the internet gets flaky"
+            (run-shell-command "sc-restart netctl-auto@wlp2s0.service")
+            )
+
+(define-key *root-map* (kbd "C-i") "reset-netctl")
 
 ;; Volume control
 (define-key *top-map* (kbd "XF86AudioLowerVolume") "exec amixer set Master 5%-")
@@ -70,6 +83,33 @@
 ;; check battery
 (defcommand battery-level () ()
   "Display the battery level"
-  (message "~a" (run-shell-command "acpi -b | grep 'Battery 0:' | sed 's/.*:\(.*\)/\1/'" t)))
+  (message "~a" (run-shell-command "acpi -b | grep 'Battery 0:' | sed \"s/Battery\\ 0:\\ \\(.*\\)/\\1/\" " t)))
 
 (define-key *root-map* (kbd "M-b") "battery-level")
+
+(setq
+ *grab-pointer-character* 40
+ *grab-pointer-character-mask* 41
+ *grab-pointer-foreground* (hex-to-xlib-color "#3db270")
+ *grab-pointer-background* (hex-to-xlib-color "#2c53ca"))
+
+
+;; Yellow and magenta are swapped to show keys in yellow.
+(setf *colors*
+      '("black" "red" "green" "magenta" "blue" "yellow" "cyan" "white"))
+(update-color-map (current-screen))
+
+(defmacro utl-set-color (val color)
+  "Similar to `set-any-color', but without updating colors."
+  `(dolist (s *screen-list*)
+     (setf (,val s) (alloc-color s ,color))))
+
+(utl-set-color screen-fg-color (hex-to-xlib-color "#e5e8ef"))
+(utl-set-color screen-bg-color (hex-to-xlib-color "#212121"))
+(utl-set-color screen-focus-color (hex-to-xlib-color "#cc8512"))
+(utl-set-color screen-border-color "ForestGreen")
+(utl-set-color screen-float-focus-color "DeepSkyBlue")
+(utl-set-color screen-float-unfocus-color "gray15")
+(update-colors-all-screens)
+
+(run-shell-command "")
