@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="mikeh"
+ZSH_THEME="jonathan"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -59,7 +59,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-alias e='emacsclient -c'
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='emacsclient -c'
@@ -70,18 +70,21 @@ alias e='emacsclient -c'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 # Development flag
-   export MFC_DEV="1"
-   # ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id:~/.ssh/mike_rsa"
-
+export MFC_DEV="1"
+# ssh
+#export SSH_KEY_PATH="~/.ssh/rsa_id:~/.ssh/mike_rsa"
+#export SSH_KEY_PATH="~/.ssh/mike_rsa"
+#ssh-add $SSH_KEY_PATH
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias e='emacsclient -c'
+alias zshconfig="e ~/.zshrc"
+alias ohmyzsh="e ~/.oh-my-zsh"
+alias stumpwmrc="e ~/.stumpwmrc"
 
 # for android compilation
 export USE_CCACHE=1
@@ -123,3 +126,15 @@ bindkey '[D'      cdUndoKey
 topShow() { top <$TTY; zle redisplay; }
 zle -N topShow
 bindkey '^[t' topShow
+
+alsamixerShow() { alsamixer <$TTY; zle redisplay; }
+zle -N alsamixerShow
+bindkey '^[a' alsamixerShow
+
+
+#export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus
+
+#for sd_cmd in systemctl systemd-analyze systemd-run; do
+#    alias $sd_cmd='DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/dbus/user_bus_socket" '$sd_cmd
+#done
+export TERM=xterm-256color
