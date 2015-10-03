@@ -119,8 +119,8 @@ cdParentKey() {
 
 zle -N                 cdParentKey
 zle -N                 cdUndoKey
-bindkey '[A'      cdParentKey
-bindkey '[D'      cdUndoKey
+bindkey '0A'      cdParentKey
+bindkey '0B'      cdUndoKey
 
 
 topShow() { top <$TTY; zle redisplay; }
@@ -131,6 +131,8 @@ alsamixerShow() { alsamixer <$TTY; zle redisplay; }
 zle -N alsamixerShow
 bindkey '^[a' alsamixerShow
 
+bindkey '^[0A' history-beginning-search-backward
+bindkey '^[0B' history-beginning-search-forward
 
 #export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus
 
@@ -138,3 +140,5 @@ bindkey '^[a' alsamixerShow
 #    alias $sd_cmd='DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/dbus/user_bus_socket" '$sd_cmd
 #done
 export TERM=xterm-256color
+
+ssh-add ~/.ssh/*rsa &> /dev/null
