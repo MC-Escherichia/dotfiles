@@ -7,8 +7,6 @@ fi
 
 xrdb -load .Xresources
 
-urxvtd -q -f -o
-
 # map capslock to control
 xmodmap -e "clear lock"
 xmodmap -e "clear control"
