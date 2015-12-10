@@ -1,4 +1,4 @@
-;; -*-lisp-*-
+ ;; -*-lisp-*-
 (in-package :stumpwm)
 
 ;;;; -*- Mode: Lisp -*-
@@ -23,14 +23,13 @@
                                         ; for fat fingering "o"
 
  (defcommand console () ()
-   "runs a console other than xterm... urxvt doesn't seem to have a class,
-                                               and it only searcches for consoles in the current group"
-   (run-or-raise "urxvt" '(:class "URxvt")))
+   "runs a console other than xterm... urxvt doesn't seem to have a class, and it only searcches for consoles in the current group"
+   (run-or-raise "urxvtc" '(:class "URxvt")))
 
 
 (define-key *root-map* (kbd "c") "console")
 (define-key *root-map* (kbd "C-c") "console")
-(define-key *root-map* (kbd "M-c") "exec urxvt")
+(define-key *root-map* (kbd "M-c") "exec urxvtc")
 
 (defcommand web () ()
   "run or raise conkeror"
@@ -40,7 +39,7 @@
   (run-or-raise "firefox" '(:class "Firefox")))
 (defcommand web3 () ()
   "run or raise chrome"
-  (run-or-raise "google-chrome-stable" '(:class "Google-chrome")))
+  (run-or-raise "chromium" '(:class "Chromim")))
 (defcommand spotify () ()
   "run or raise spotify"
   (run-or-raise "spotify" '(:class "Spotify")))
@@ -64,20 +63,20 @@
 
 (defcommand reset-netctl () ()
             "resets netctl-auto for those moments when the internet gets flaky"
-            (run-shell-command "sc-restart netctl-auto@wlp2s0.service")
-            )
+            (run-shell-command "sc-restart netctl-auto@wlp2s0.service"))
 
 (define-key *root-map* (kbd "C-i") "reset-netctl")
 
 ;; Volume control
-(define-key *top-map* (kbd "XF86AudioLowerVolume") "exec amixer set Master 5%-")
-(define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec amixer set Master 5%+")
+(define-key *top-map* (kbd "XF86AudioLowerVolume")  "exec amixer set Master 5%-")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume")  "exec amixer set Master 5%+")
 
 ;; Mute
 (define-key *top-map* (kbd "XF86AudioMute") "exec amixer set Master toggle")
 
-(define-key *top-map* (kbd "XF86MonBrightnessDown") "exec xbacklight - 20")
-(define-key *top-map* (kbd "XF86MonBrightnessUp")   "exec xbacklight + 20")
+;; backlight
+(define-key *top-map* (kbd "XF86MonBrightnessDown")  "exec xbacklight - 20")
+(define-key *top-map* (kbd "XF86MonBrightnessUp")  "exec xbacklight + 20")
 
 
 ;; check battery
@@ -111,5 +110,3 @@
 (utl-set-color screen-float-focus-color "DeepSkyBlue")
 (utl-set-color screen-float-unfocus-color "gray15")
 (update-colors-all-screens)
-
-(run-shell-command "")

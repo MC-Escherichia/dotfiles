@@ -11,9 +11,9 @@ require("page-modes/xkcd.js");
 
 
 // webjumps
-define_webjump("1gmail", "https://mail.google.com/mail/u/0/"); //primary account
-define_webjump("2gmail", "https://mail.google.com/mail/u/1/"); //secondary account
-define_webjump("3gmail", "https://mail.google.com/mail/u/2/"); //tertiary account
+define_webjump("1gmail", "https://inbox.google.com/u/0/"); //primary account
+define_webjump("2gmail", "https://inbox.google.com/u/1/"); //secondary account
+define_webjump("3gmail", "https://inbox.google.com/u/2/"); //tertiary account
 define_webjump("archwiki", "https://wiki.archlinux.org/index.php?search=%s"); // arch wiki
 define_webjump("bashfaq","http://mywiki.wooledge.org/BashFAQ?action=fullsearch&context=180&value=%s&fullsearch=Text", $alternative = "http://mywiki.wooledge.org/BashFAQ");
 define_webjump("clio","http://clio.columbia.edu/quicksearch?q=%s&commit=Search");
@@ -32,6 +32,10 @@ define_webjump("wunderground", "http://www.wunderground.com/cgi-bin/findweather/
 define_webjump("youtube", "http://www.youtube.com/results?search_query=%s&search=Search");
 define_webjump("youtube-user", "http://youtube.com/profile_videos?user=%s");
 
+
+// firefox compat mode
+session_pref("general.useragent.compatMode.firefox", true);
+
 xkcd_add_title = true;
 
 url_remoting_fn = load_url_in_new_buffer;
@@ -45,36 +49,36 @@ cwd.append("Downloads");
 //          // I think by the time kill_buffer_hook runs the buffer is gone so I
 //  // patch kill_buffer
 //
-//  var kill_buffer_original = kill_buffer_original || kill_buffer;
+  var kill_buffer_original = kill_buffer_original || kill_buffer;
+
+  var killed_buffer_urls = [];
 //
-//  var killed_buffer_urls = [];
-//
-//  kill_buffer = function (buffer, force) {
-//      if (buffer.display_uri_string) {
-//          killed_buffer_urls.push(buffer.display_uri_string);
-//      }
-//
-//      kill_buffer_original(buffer,force);
-//  };
-//
-//  interactive("restore-killed-buffer-url", "Loads url from a previously killed buffer",
-//              function restore_killed_buffer_url (I) {
-//                  if (killed_buffer_urls.length !== 0) {
-//                      var url = yield I.minibuffer.read(
-//                          $prompt = "Restore killed url:",
-//                          $completer = new all_word_completer($completions = killed_buffer_urls),
-//                          $default_completion = killed_buffer_urls[killed_buffer_urls.length - 1],
-//                          $auto_complete = "url",
-//                          $auto_complete_initial = true,
-//                          $auto_complete_delay = 0,
-//                          $require_match = true);
-//
-//                      load_url_in_new_buffer(url);
-//                  } else {
-//                      I.window.minibuffer.message("No killed buffer urls");
-//                  }
-//              });
-//
+  kill_buffer = function (buffer, force) {
+      if (buffer.display_uri_string) {
+          killed_buffer_urls.push(buffer.display_uri_string);
+      }
+
+      kill_buffer_original(buffer,force);
+  };
+
+  interactive("restore-killed-buffer-url", "Loads url from a previously killed buffer",
+              function restore_killed_buffer_url (I) {
+                  if (killed_buffer_urls.length !== 0) {
+                      var url = yield I.minibuffer.read(
+                          $prompt = "Restore killed url:",
+                          $completer = new all_word_completer($completions = killed_buffer_urls),
+                          $default_completion = killed_buffer_urls[killed_buffer_urls.length - 1],
+                          $auto_complete = "url",
+                          $auto_complete_initial = true,
+                          $auto_complete_delay = 0,
+                          $require_match = true);
+
+                      load_url_in_new_buffer(url);
+                  } else {
+                      I.window.minibuffer.message("No killed buffer urls");
+                  }
+              });
+
 
 // ask  before closing window
    add_hook("window_before_close_hook",
@@ -110,3 +114,17 @@ interactive("find-url-from-history-new-buffer",
 
 define_key(content_buffer_normal_keymap, "h", "find-url-from-history-new-buffer");
 define_key(content_buffer_normal_keymap, "H", "find-url-from-history");
+
+external_content_handlers =
+        {
+    "*": getenv("EDITOR"),
+    text: { "*": getenv("EDITOR") },
+    image: { "*": "feh" },
+    video: { "*": "mpv" },
+    audio: { "*": "mpv" },
+    application: {
+        pdf: "zathura",
+        postscript: "gv",
+        "x-dvi": "zathura"
+    }
+}

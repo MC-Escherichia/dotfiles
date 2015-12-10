@@ -1,5 +1,6 @@
 {:user {:plugins [                      ;[mvxcvi/whidbey "0.3.2"]
-                  [cider/cider-nrepl "0.8.0-SNAPSHOT"]
+                  [refactor-nrepl "1.2.0" ]
+                  [cider/cider-nrepl "0.9.1"]
                   ;;                  [lein-nevam "0.1.2"]
                   [lein-ubersource "0.1.1"]
 

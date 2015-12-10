@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="jonathan"
+ZSH_THEME="intheloop"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -48,7 +48,7 @@ setopt HIST_IGNORE_DUPS
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git arch adb archlinux cp battery extract fasd git-extras gnu-utils gpg-agent lein npm python repo ssh-agent systemd)
+plugins=(archlinux common-aliases extract fasd git lein npm)
 
 # User configuration
 
@@ -61,11 +61,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
+if [[ -e $DISPLAY ]]; then
    export EDITOR='emacsclient -c'
-# else
-#   export EDITOR='mvim'
-# fi
+ else
+   export EDITOR='emacsclient -t'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -81,7 +81,10 @@ export MFC_DEV="1"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias e='emacsclient -c'
+function e() {
+    emacsclient -c $* &
+    }
+#alias e='emacsclient -c'
 alias zshconfig="e ~/.zshrc"
 alias ohmyzsh="e ~/.oh-my-zsh"
 alias stumpwmrc="e ~/.stumpwmrc"
@@ -97,7 +100,6 @@ autoload -U run-help
 autoload run-help-git
 autoload run-help-svn
 autoload run-help-svk
-unalias run-help
 alias help=run-help
 
 # file manager keybinds
@@ -119,11 +121,11 @@ cdParentKey() {
 
 zle -N                 cdParentKey
 zle -N                 cdUndoKey
-bindkey '0A'      cdParentKey
-bindkey '0B'      cdUndoKey
+bindkey '^[[1;3A'      cdParentKey
+bindkey '^[[1;3D'      cdUndoKey
 
 
-topShow() { top <$TTY; zle redisplay; }
+topShow() { htop <$TTY; zle redisplay; }
 zle -N topShow
 bindkey '^[t' topShow
 
@@ -134,11 +136,44 @@ bindkey '^[a' alsamixerShow
 bindkey '^[0A' history-beginning-search-backward
 bindkey '^[0B' history-beginning-search-forward
 
-#export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus
 
-#for sd_cmd in systemctl systemd-analyze systemd-run; do
-#    alias $sd_cmd='DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/dbus/user_bus_socket" '$sd_cmd
-#done
 export TERM=xterm-256color
 
-ssh-add ~/.ssh/*rsa &> /dev/null
+GPG_TTY=$(tty)
+export GPG_TTY
+
+alias scu='systemctl --user'
+alias sc='systemctl'
+alias sr3='sr -browser=w3m'
+
+export GOPATH=/usr/local/share/go
+export PATH="$GOPATH/bin:$PATH"
+
+function src(){
+    source ~/.zshrc
+    }
+
+function scr(){
+    exec $1
+    }
+
+function _scr(){
+    _path_files -g '~/.screenlayout/*.sh'
+}
+
+compdef _scr src
+
+function za(){
+    zathura $* &
+    }
+
+
+function reset_ssh(){
+    pkill ssh-agent
+    unset SSH_AGENT_PID SSH_AUTH_SOCK
+    export SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh
+    #SSH_KEY_PATH=~/.ssh/{*}_rsa
+    #ssh-add $SSH_KEY_PATH
+    }
+
+reset_ssh
