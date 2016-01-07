@@ -154,14 +154,20 @@ function src(){
     }
 
 function scr(){
-    exec $1
+    #compdef _scr
+    . ~/.screenlayout/$1.sh
     }
 
 function _scr(){
-    _path_files -g '~/.screenlayout/*.sh'
+
+    for f in ~/.screenlayout/; do
+        filename= $(basename $f)
+        compadd ${filename%.*}
+        unset f filename
+        done
 }
 
-compdef _scr src
+
 
 function za(){
     zathura $* &
