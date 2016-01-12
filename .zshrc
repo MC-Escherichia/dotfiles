@@ -51,7 +51,6 @@ setopt HIST_IGNORE_DUPS
 plugins=(archlinux common-aliases extract fasd git lein npm)
 
 # User configuration
-
 export PATH=$HOME/npm/bin:$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -121,8 +120,8 @@ cdParentKey() {
 
 zle -N                 cdParentKey
 zle -N                 cdUndoKey
-bindkey '^[[1;3A'      cdParentKey
-bindkey '^[[1;3D'      cdUndoKey
+bindkey 'OA'      cdParentKey
+bindkey 'OD'      cdUndoKey
 
 
 topShow() { htop <$TTY; zle redisplay; }
