@@ -50,9 +50,13 @@ setopt HIST_IGNORE_DUPS
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(archlinux common-aliases extract fasd git lein npm)
 
+#
+NPM_PACKAGES=${HOME}/.npm
+NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 # User configuration
-export PATH=$HOME/npm/bin:$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH=$NPM_PACKAGES/bin:/usr/local/bin:$PATH
+unset MANPATH
+MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 source $ZSH/oh-my-zsh.sh
 
