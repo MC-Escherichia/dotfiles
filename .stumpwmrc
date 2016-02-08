@@ -39,7 +39,7 @@
   (run-or-raise "firefox" '(:class "Firefox")))
 (defcommand web3 () ()
   "run or raise chrome"
-  (run-or-raise "chromium" '(:class "Chromim")))
+  (run-or-raise "chromium" '(:class "Chrome")))
 (defcommand spotify () ()
   "run or raise spotify"
   (run-or-raise "spotify" '(:class "Spotify")))

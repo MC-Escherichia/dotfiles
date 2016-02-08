@@ -15,6 +15,7 @@ define_webjump("1gmail", "https://inbox.google.com/u/0/"); //primary account
 define_webjump("2gmail", "https://inbox.google.com/u/1/"); //secondary account
 define_webjump("3gmail", "https://inbox.google.com/u/2/"); //tertiary account
 define_webjump("archwiki", "https://wiki.archlinux.org/index.php?search=%s"); // arch wiki
+define_webjump("arthena", "https://mail.google.com/mail/u/2/"); //tertiary account
 define_webjump("bashfaq","http://mywiki.wooledge.org/BashFAQ?action=fullsearch&context=180&value=%s&fullsearch=Text", $alternative = "http://mywiki.wooledge.org/BashFAQ");
 define_webjump("clio","http://clio.columbia.edu/quicksearch?q=%s&commit=Search");
 define_webjump("g","https://google.com/search?q=%s");

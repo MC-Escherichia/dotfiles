@@ -145,6 +145,8 @@ export TERM=xterm-256color
 GPG_TTY=$(tty)
 export GPG_TTY
 
+export BROWSER=conkeror
+
 alias scu='systemctl --user'
 alias sc='systemctl'
 alias sr3='sr -browser=w3m'
