@@ -31,7 +31,9 @@ define_webjump("w3schools", "http://www.w3schools.com"); // w3schools site
 define_webjump("w3search", "http://www.google.com/search?sitesearch=www.w3schools.com&as_q=%s"); // w3schools search
 define_webjump("wunderground", "http://www.wunderground.com/cgi-bin/findweather/getForecast?query=%s");
 define_webjump("youtube", "http://www.youtube.com/results?search_query=%s&search=Search");
+
 define_webjump("youtube-user", "http://youtube.com/profile_videos?user=%s");
+define_webjump("cooking","javascript:(function(){if(window.location.protocol!='http:'){var%20gaScript%20=%20document.createElement('script');gaScript.innerHTML%20=%20'(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new%20Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create",%20"UA-50005540-1",%20"auto");ga("send",%20"pageview");';document.head.appendChild(gaScript);ga('send',%20{'hitType':%20'event','eventCategory':%20'bookmarkletEvent','eventAction':%20'Save%20Error','eventLabel':%20window.location.host%20+%20':'%20+%20document.title});var%20autoCloseDelay=5000;var%20nytcDiv=document.createElement('div');nytcDiv.setAttribute('id','nytcBookmarklet');nytcDiv.style.cssText='width:100%;height:60px;color:#fff;background-color:#e33d26;position:fixed;top:0;z-index:2147483647;text-align:center';var%20logoLink%20=%20document.createElement('a');var%20logoImage%20=%20document.createElement('div');logoImage.style.cssText%20=%20'width:28px;height:34px;position:absolute;left:15px;top:15px;background-image:url(\'http://cooking.nytimes.com/static/images/bookmarklet/T-logo.svg\');text-decoration:none;';nytcDiv.innerHTML='<a%20href="http://cooking.nytimes.com"%20target="_blank"%20style="width:28px;height:34px;position:absolute;left:15px;top:15px;background-image:url(\'http://cooking.nytimes.com/static/images/bookmarklet/T-logo.svg\');text-decoration:none;"></a><div%20style="padding-top:18px;font-size:16px;font-family:Arial;font-weight:600">Error%20saving.</div><div%20onclick="document.body.removeChild(document.getElementById(\'nytcBookmarklet\'));"id="nytcbClose"style="position:absolute;cursor:pointer;width:18px;height:18px;top:20px;right:%2020px;background-image:url(\'http://cooking.nytimes.com/static/images/bookmarklet/close.svg\');text-decoration:none;"></div>';document.body.appendChild(nytcDiv);window.setTimeout(function(){document.body.removeChild(nytcDiv);document.head.removeChild(gaScript);},%20autoCloseDelay);}%20else%20{%20var%20nytcJs%20=%20document.createElement('script');nytcJs.setAttribute('type','text/javascript');nytcJs.id%20=%20'nytcJS';nytcJs.setAttribute('src','http://cooking.nytimes.com/static/save_to_cooking/save_to_cooking.js?http://cooking.nytimes.com&bookmarklet');document.body.appendChild(nytcJs);}})();")
 
 
 // firefox compat mode
@@ -117,7 +119,7 @@ define_key(content_buffer_normal_keymap, "h", "find-url-from-history-new-buffer"
 define_key(content_buffer_normal_keymap, "H", "find-url-from-history");
 
 external_content_handlers =
-        {
+    {
     "*": getenv("EDITOR"),
     text: { "*": getenv("EDITOR") },
     image: { "*": "feh" },
@@ -127,5 +129,4 @@ external_content_handlers =
         pdf: "zathura",
         postscript: "gv",
         "x-dvi": "zathura"
-    }
-}
+    }};
