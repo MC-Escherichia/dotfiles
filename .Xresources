@@ -152,15 +152,15 @@ URxvt*letterSpace:                    -1
 ! URxvt*secondaryScroll:                boolean
 ! URxvt*perl-lib:                       string
 ! URxvt*perl-eval:                      perl-eval
-! URxvt*perl-ext-common:                default,clipboard,matcher,selection-to-clipboard
-! URxvt*perl-ext:                       string
+URxvt*perl-ext-common:                default,clipboard,matcher,url-select,keyboard-select,selection-to-clipboard
 URxvt*iso14755:                       False
+! URxvt*perl-ext:                       string
 ! URxvt*iso14755_52:                    boolean
 ! URxvt*xrm:                            string
-URxvt*keysym.Control-w:                     perl:clipboard:copy
-URxvt*keysym.Control-y:                     perl:clipboard:paste
-URxvt*clipboard.copycmd:                     xsel -ib
-URxvt*clipboard.pastecmd:                     xsel -ob
+URxvt*keysym.Control-w:                perl:clipboard:copy
+URxvt*keysym.Control-y:                perl:clipboard:paste
+URxvt*clipboard.copycmd:               xsel -ib
+URxvt*clipboard.pastecmd:              xsel -ob
 
 ! URxvt*keysym.sym:                     keysym
 ! URxvt*background.border:              boolean
@@ -184,13 +184,13 @@ URxvt*clipboard.pastecmd:                     xsel -ob
 ! URxvt*tab-fg:                         colour
 ! URxvt*tabbar-bg:                      colour
 ! URxvt*tabbar-fg:                      colour
-URxvt*url-launcher:                   /usr/bin/firefox
+URxvt*url-launcher:                   /usr/bin/conkeror
 URxvt*matcher.button:                 1
 URxvt.keysym.C-Delete: perl:matcher:last
 URxvt.keysym.M-Delete: perl:matcher:list
- URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
-! URxvt.url-select.launcher:  chromium
+! URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+ URxvt.url-select.launcher: /usr/bin/conkeror
  URxvt.url-select.underline: true
  URxvt.keysym.M-u:           perl:url-select:select_next
- URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+  URxvt.keysym.M-Escape:      perl:keyboard-select:activate
  URxvt.keysym.M-s:           perl:keyboard-select:search
