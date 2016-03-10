@@ -75,7 +75,7 @@ fi
 # Development flag
 export MFC_DEV="1"
 # ssh
-#export SSH_KEY_PATH="~/.ssh/rsa_id:~/.ssh/mike_rsa"
+export SSH_KEY_PATH="~/.ssh/rsa_id:~/.ssh/mike_rsa:~/.ssh/mike2_rsa"
 #export SSH_KEY_PATH="~/.ssh/mike_rsa"
 #ssh-add $SSH_KEY_PATH
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
