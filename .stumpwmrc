@@ -5,6 +5,8 @@
 
 ;; (run-shell-command "feh --bg-scale /home/dave/Dropbox/Photos/cherry_blossoms.jpg")
 
+(set-prefix-key (kbd "C-t"))
+
 (defcommand swank () ()
     "turn on swank server for the first time.
      Loads a file that re-defines swank and then calls it"
@@ -14,17 +16,15 @@
       "Starting swank inside stumpwm
        M-x slime-connect RET 4004 RET, then (in-package stumpwm)"))
 
-(set-prefix-key (kbd "C-t"))
-
 (define-key *root-map* (kbd "C-s") "swank")
 ;; start a swank server inside the process
 
 (define-key *root-map* (kbd "C-o") "fnext")
                                         ; for fat fingering "o"
 
- (defcommand console () ()
-   "runs a console other than xterm... urxvt doesn't seem to have a class, and it only searcches for consoles in the current group"
-   (run-or-raise "urxvtc" '(:class "URxvt")))
+(defcommand console () ()
+            "runs a console other than xterm... urxvt doesn't seem to have a class, and it only searcches for consoles in the current group"
+            (run-or-raise "urxvtc -e 'screen'" '(:class "URxvt")))
 
 
 (define-key *root-map* (kbd "c") "console")
@@ -39,7 +39,7 @@
   (run-or-raise "firefox" '(:class "Firefox")))
 (defcommand web3 () ()
   "run or raise chrome"
-  (run-or-raise "chromium" '(:class "Chrome")))
+  (run-or-raise "google-chrome-stable" '(:title "Google Chrome")))
 (defcommand spotify () ()
   "run or raise spotify"
   (run-or-raise "spotify" '(:class "Spotify")))
@@ -59,11 +59,14 @@
 (run-commands "gnewbg musak")
 (clear-window-placement-rules)
 (define-frame-preference "musak"
-    (0 t t :title "Spotify Free - Linux Preview"))
+    (0 t nil :class "Spotify"))
 
 (defcommand reset-netctl () ()
             "resets netctl-auto for those moments when the internet gets flaky"
-            (run-shell-command "sc-restart netctl-auto@wlp2s0.service"))
+            (echo-string
+             (current-screen)
+             "Restarting netctl-auto")
+            (run-shell-command "systemctl restart netctl-auto@wlp2s0.service"))
 
 (define-key *root-map* (kbd "C-i") "reset-netctl")
 

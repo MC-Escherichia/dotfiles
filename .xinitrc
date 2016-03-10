@@ -45,4 +45,6 @@ fi
 #
 
 # and here... we... go...
+systemctl --user start emacs &
+urxvtd &
 exec sbcl --load /usr/local/bin/startstump
